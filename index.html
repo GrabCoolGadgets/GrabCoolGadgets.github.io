@@ -97,13 +97,19 @@
     font-size: 16px;
     font-weight: bold;
     color: #333;
-    text-align: right;
+    text-align: right; /* 🔹 Pehli line right se align hogi */
     flex-grow: 1;
     white-space: normal;
     word-wrap: break-word;
     display: flex;
-    flex-direction: column; /* 🔹 Text hamesha left se start hoga */
-        }
+    flex-direction: column;
+    align-items: flex-end; /* 🔹 Text right me dikhayega */
+}
+
+.product span span {
+    text-align: left; /* 🔹 Agar line break hoti hai, to niche ka text left se start hoga */
+    align-self: flex-start;
+}
         .hidden {
             display: none;
         }
