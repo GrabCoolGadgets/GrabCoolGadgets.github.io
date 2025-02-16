@@ -151,7 +151,7 @@
 
     <script>
     function loadProducts() {
-        fetch('https://yourgithubusername.github.io/product/products.json') // ✅ GitHub JSON File ka URL
+        fetch('https://raw.githubusercontent.com/GrabCoolGadgets/GrabCoolGadgets.github.io/refs/heads/main/Product/products.json') // ✅ GitHub JSON File ka URL
         .then(response => response.json())
         .then(products => {
             let productList = document.getElementById("product-list");
