@@ -97,9 +97,10 @@
     font-size: 16px;
     font-weight: bold;
     color: #333;
-    text-align: right; /* 🔹 Text right align */
-    flex-grow: 1; /* 🔹 Text ko right me push karega */
-    text-overflow: ellipsis; /* 🔹 '...' show hoga agar text bada ho */
+    text-align: left; /* 🔹 Text left se start hoga */
+    flex-grow: 1;
+    white-space: normal; /* 🔹 Multiple line hone par text wrap hoga */
+    word-wrap: break-word; /* 🔹 Long words bhi break honge */
         }
         .hidden {
             display: none;
