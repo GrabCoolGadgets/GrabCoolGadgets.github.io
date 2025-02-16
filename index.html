@@ -94,11 +94,14 @@
             margin-right: 15px;
         }
         .product span {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-            text-align: right;
-            flex-grow: 1;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: right; /* 🔹 Text right align */
+    flex-grow: 1; /* 🔹 Text ko right me push karega */
+    white-space: nowrap; /* 🔹 Text ek hi line me rahega */
+    overflow: hidden; /* 🔹 Overflow hone par text chup jayega */
+    text-overflow: ellipsis; /* 🔹 '...' show hoga agar text bada ho */
         }
         .hidden {
             display: none;
