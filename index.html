@@ -150,24 +150,37 @@
   </footer>
 
     <script>
+    let products = []; // 🔹 Products ko globally store karenge
+
     function loadProducts() {
         fetch('https://raw.githubusercontent.com/GrabCoolGadgets/GrabCoolGadgets.github.io/refs/heads/main/Product/products.json') // ✅ GitHub JSON File ka URL
         .then(response => response.json())
-        .then(products => {
-            let productList = document.getElementById("product-list");
-            productList.innerHTML = "";
-            products.forEach(product => {
-                let productDiv = document.createElement("div");
-                productDiv.classList.add("product");
-                productDiv.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <span>${product.name}</span>
-                `;
-                productDiv.onclick = () => window.location.href = product.link;
-                productList.appendChild(productDiv);
-            });
+        .then(data => {
+            products = data; // 🔹 Products ko global variable me store karna
+            displayProducts(products); // 🔹 Pehli baar sare products dikhana
         })
         .catch(error => console.error("Error fetching products:", error));
+    }
+
+    function displayProducts(filteredProducts) {
+        let productList = document.getElementById("product-list");
+        productList.innerHTML = "";
+        filteredProducts.forEach(product => {
+            let productDiv = document.createElement("div");
+            productDiv.classList.add("product");
+            productDiv.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <span>${product.name}</span>
+            `;
+            productDiv.onclick = () => window.location.href = product.link;
+            productList.appendChild(productDiv);
+        });
+    }
+
+    function filterProducts() {
+        let query = document.getElementById("searchInput").value.toLowerCase();
+        let filtered = products.filter(product => product.name.toLowerCase().includes(query));
+        displayProducts(filtered); // 🔹 Search ke hisaab se naye products dikhana
     }
 
     document.addEventListener("DOMContentLoaded", loadProducts);
